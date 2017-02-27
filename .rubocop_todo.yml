@@ -13,11 +13,6 @@ Lint/UnusedMethodArgument:
   Exclude:
     - 'lib/paper/dsl.rb'
 
-# Offense count: 1
-# Configuration parameters: CountComments, ExcludedMethods.
-Metrics/BlockLength:
-  Max: 31
-
 # Offense count: 4
 Style/Documentation:
   Exclude:
