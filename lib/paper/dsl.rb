@@ -24,7 +24,7 @@ module Paper
         define_helper_methods(name, selector)
       end
 
-      def component(name, type, selector, options = {})
+      def component(name, type, selector)
         define_method(name.to_s) do
           type.new(@node.find(selector))
         end
