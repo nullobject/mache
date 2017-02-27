@@ -6,8 +6,18 @@ describe Paper::Page do
 
   subject(:page) { Paper::Page.new(node: node, path: path) }
 
+  describe ".visit" do
+    let(:page) { double }
+
+    it "creates a new page and visits it" do
+      expect(Paper::Page).to receive(:new) { page }
+      expect(page).to receive(:visit)
+      Paper::Page.visit
+    end
+  end
+
   describe "#visit" do
-    it "visits the path" do
+    it "visits the page" do
       expect(node).to receive(:visit).with(path)
       page.visit
     end

@@ -19,7 +19,7 @@ module Paper
     end
 
     def self.visit
-      new.tap { |page| page.visit }
+      new.tap(&:visit)
     end
   end
 end
