@@ -3,3 +3,9 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   Exclude:
     - 'bin/**/*'
+
+Metrics/BlockLength:
+  ExcludedMethods: 'describe'
+
+Style/StringLiterals:
+  EnforcedStyle: 'double_quotes'
