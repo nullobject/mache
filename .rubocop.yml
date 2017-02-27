@@ -1,16 +1,16 @@
 AllCops:
   Exclude:
-    - 'bin/**/*'
+    - "bin/**/*"
 
 Metrics/BlockLength:
-  ExcludedMethods: 'describe'
+  ExcludedMethods: describe
 
 Style/Documentation:
   Exclude:
-    - 'spec/**/*'
+    - "spec/**/*"
 
 Style/StringLiterals:
-  EnforcedStyle: 'double_quotes'
+  EnforcedStyle: double_quotes
 
 Style/FrozenStringLiteralComment:
-  EnforcedStyle: 'never'
+  Enabled: false
