@@ -1,10 +1,11 @@
 module Paper
+  # Provides the paper DSL for nodes.
   module DSL
     def self.included(base)
       base.extend ClassMethods
     end
 
-    module ClassMethods
+    module ClassMethods #:nodoc:
       def automation(*ids)
         ids.map { |id| %([data-automation="#{id}"]) }.join(" ")
       end

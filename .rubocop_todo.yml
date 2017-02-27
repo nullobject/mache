@@ -12,12 +12,3 @@
 Lint/UnusedMethodArgument:
   Exclude:
     - 'lib/paper/dsl.rb'
-
-# Offense count: 4
-Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'lib/paper/dsl.rb'
-    - 'lib/paper/node.rb'
-    - 'lib/paper/page.rb'

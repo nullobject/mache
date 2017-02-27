@@ -7,6 +7,10 @@ AllCops:
 Metrics/BlockLength:
   ExcludedMethods: 'describe'
 
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+
 Style/StringLiterals:
   EnforcedStyle: 'double_quotes'
 

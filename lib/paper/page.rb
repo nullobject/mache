@@ -1,6 +1,8 @@
 require "paper/node"
 
 module Paper
+  # A page provides a DSL for querying a wrapped capybara node object node. A
+  # page can also has a path which can be visited.
   class Page < Node
     attr_reader :path
 
