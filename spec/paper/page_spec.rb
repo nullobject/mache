@@ -10,7 +10,7 @@ describe Paper::Page do
     let(:page) { double }
 
     it "creates a new page and visits it" do
-      expect(Paper::Page).to receive(:new) { page }
+      expect(Paper::Page).to receive(:new).and_return(page)
       expect(page).to receive(:visit)
       Paper::Page.visit
     end
@@ -25,12 +25,12 @@ describe Paper::Page do
 
   describe "#current?" do
     it "returns true when the page is current" do
-      expect(node).to receive(:current_path) { "/my-page" }
+      expect(node).to receive(:current_path).and_return("/my-page")
       expect(page).to be_current
     end
 
     it "returns false when the page is not current" do
-      expect(node).to receive(:current_path) { "/another-page" }
+      expect(node).to receive(:current_path).and_return("/another-page")
       expect(page).to_not be_current
     end
   end
