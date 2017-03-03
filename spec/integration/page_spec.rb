@@ -1,8 +1,20 @@
+require "rack/file"
 require "spec_helper"
 
+class Label < Paper::Component
+  def required?
+    @node[:class].include?("required")
+  end
+end
+
 class Field < Paper::Component
-  element :label, "label"
+  component :label, Label, "label"
   element :input, "input"
+end
+
+class Form < Paper::Component
+  components :fields, Field, "div"
+  element :button, "button"
 end
 
 class Header < Paper::Component
@@ -11,45 +23,44 @@ end
 
 class MyPage < Paper::Page
   component :header, Header, "header"
-  components :fields, Field, "form > div"
-  element :button, "button"
+  component :form, Form, "form"
+
+  def path
+    "/sign_in.html"
+  end
+
+  def sign_in(username, password)
+    fill_in "Username", with: username
+    fill_in "Password", with: password
+    form.button.click
+  end
 end
 
 describe MyPage do
-  let(:node) do
-    Capybara.string <<-HTML
-      <header>
-        <h1>People</h1>
-      </header>
-      <form>
-        <div>
-          <label>Name</label>
-          <input type="text" name="name" value="Jane Citizen">
-        </div>
-        <div>
-          <label>Phone</label>
-          <input type="text" name="phone" value="12345678">
-        </div>
-        <button type="submit">Save</button>
-      </form>
-    HTML
+  before do
+    Capybara.app = Rack::File.new(File.expand_path("../../fixtures", __FILE__))
   end
 
-  subject(:page) { MyPage.new(node: node) }
+  subject(:page) { MyPage.visit }
 
-  it "handles elements" do
-    expect(page.button.text).to eq("Save")
+  it "has a header" do
+    expect(page).to have_header
+    expect(page.header.title.text).to eq("Sign in")
   end
 
-  it "handles a single nested component" do
-    expect(page.header.title.text).to eq("People")
+  it "has a form" do
+    expect(page.form.fields[0].label.text).to eq("Username")
+    expect(page.form.fields[0].label).to be_required
+    expect(page.form.fields[0].input.value).to be_nil
+
+    expect(page.form.fields[1].label.text).to eq("Password")
+    expect(page.form.fields[1].input.value).to be_nil
+
+    expect(page.form).to have_button
+    expect(page.form.button.text).to eq("Sign in")
   end
 
-  it "handles multiple nested components" do
-    expect(page.fields[0].label.text).to eq("Name")
-    expect(page.fields[0].input.value).to eq("Jane Citizen")
-
-    expect(page.fields[1].label.text).to eq("Phone")
-    expect(page.fields[1].input.value).to eq("12345678")
+  it "can sign in" do
+    page.sign_in("jane", "secret")
   end
 end
