@@ -3,7 +3,7 @@ require "spec_helper"
 
 class Label < Paper::Component
   def required?
-    @node[:class].include?("required")
+    node[:class].include?("required")
   end
 end
 
@@ -49,6 +49,9 @@ describe MyPage do
   end
 
   it "has a form" do
+    expect(page.form).to have_fields
+    expect(page.form.fields.count).to be(2)
+
     expect(page.form.fields[0].label.text).to eq("Username")
     expect(page.form.fields[0].label).to be_required
     expect(page.form.fields[0].input.value).to be_nil
