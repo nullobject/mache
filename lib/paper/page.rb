@@ -1,3 +1,4 @@
+require "capybara"
 require "paper/node"
 
 module Paper
