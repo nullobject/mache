@@ -1,6 +1,6 @@
 # Paper
 
-[![Build Status](https://travis-ci.org/conversation/paper.svg?branch=master)](https://travis-ci.org/conversation/paper)
+[![Build Status](https://travis-ci.org/nullobject/paper.svg?branch=master)](https://travis-ci.org/nullobject/paper)
 
 A [page object](https://martinfowler.com/bliki/PageObject.html) library for writing cleaner acceptance tests with [Capybara](https://github.com/teamcapybara/capybara).
 
