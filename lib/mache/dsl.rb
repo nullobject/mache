@@ -1,5 +1,5 @@
-module Paper
-  # Provides the paper DSL for nodes.
+module Mache
+  # Provides the mache DSL for nodes.
   module DSL
     def self.included(base)
       base.extend ClassMethods

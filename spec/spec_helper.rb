@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
-require "paper"
+require "mache"
 
 RSpec.configure do |config|
   config.mock_with :rspec do |mocks|

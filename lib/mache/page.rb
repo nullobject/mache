@@ -1,7 +1,7 @@
 require "capybara"
-require "paper/node"
+require "mache/node"
 
-module Paper
+module Mache
   # A page provides a DSL for querying a wrapped capybara node object node. A
   # page can also has a path which can be visited.
   class Page < Node

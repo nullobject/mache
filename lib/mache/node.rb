@@ -1,7 +1,7 @@
-require "paper/dsl"
+require "mache/dsl"
 
-module Paper
-  # An abstract class that wraps a capybara node object and exposes the paper
+module Mache
+  # An abstract class that wraps a capybara node object and exposes the mache
   # DSL. It also delegates any capybara methods to the underlying node object.
   class Node
     include DSL

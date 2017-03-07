@@ -1,6 +1,6 @@
-# Paper
+# Mache
 
-[![Build Status](https://travis-ci.org/nullobject/paper.svg?branch=master)](https://travis-ci.org/nullobject/paper)
+[![Build Status](https://travis-ci.org/nullobject/mache.svg?branch=master)](https://travis-ci.org/nullobject/mache)
 
 A [page object](https://martinfowler.com/bliki/PageObject.html) library for writing cleaner acceptance tests with [Capybara](https://github.com/teamcapybara/capybara).
 
@@ -27,11 +27,11 @@ Consider the following HTML snippet:
 ```
 
 To define a page object class to wrap this HTML snippet, we extend the
-`Paper::Page` class. The only method our class needs to provide is `path`, this
-tells Paper where to go when we want to visit the page.
+`Mache::Page` class. The only method our class needs to provide is `path`, this
+tells Mache where to go when we want to visit the page.
 
 ```ruby
-class WelcomePage < Paper::Page
+class WelcomePage < Mache::Page
   def path
     "/welcome"
   end
@@ -60,7 +60,7 @@ that we expect to find on the page using a CSS selector.
 Let's define a `main` element:
 
 ```ruby
-class WelcomePage < Paper::Page
+class WelcomePage < Mache::Page
   element :main, "body > main"
 
   def path
@@ -80,12 +80,12 @@ page.main.text # "lorem ipsum"
 ### Components
 
 For elements that can be shared across an number of page object classes, it may
-be useful to define a reusable component by extending the `Paper::Component`
+be useful to define a reusable component by extending the `Mache::Component`
 class. A component class can contain any number of elements or other
 components:
 
 ```ruby
-class Header < Paper::Component
+class Header < Mache::Component
   element :title, "h1"
 end
 ```
@@ -94,7 +94,7 @@ Our page object class can mount our component at a given CSS selector using the
 `component` macro:
 
 ```ruby
-class WelcomePage < Paper::Page
+class WelcomePage < Mache::Page
   component :header, Header, "header"
   element :main, "body > main"
 
@@ -117,21 +117,21 @@ page.header.title.text # "Welcome"
 Let's look at a more complete example for our `WelcomePage`:
 
 ```ruby
-class Header < Paper::Component
+class Header < Mache::Component
   element :title, "h1"
 end
 
-class NavItem < Paper::Component
+class NavItem < Mache::Component
   def selected?
     node[:class].include?("selected")
   end
 end
 
-class Nav < Paper::Component
+class Nav < Mache::Component
   components :items, NavItem, "a"
 end
 
-class WelcomePage < Paper::Page
+class WelcomePage < Mache::Page
   component :header, Header, "header"
   component :nav, Nav, "nav"
   element :main, "main"

@@ -1,6 +1,6 @@
-require "paper/node"
+require "mache/node"
 
-module Paper
+module Mache
   class Component < Node
   end
 end

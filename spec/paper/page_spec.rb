@@ -1,18 +1,18 @@
 require "spec_helper"
 
-describe Paper::Page do
+describe Mache::Page do
   let(:node) { double }
   let(:path) { "/my-page" }
 
-  subject(:page) { Paper::Page.new(node: node, path: path) }
+  subject(:page) { Mache::Page.new(node: node, path: path) }
 
   describe ".visit" do
     let(:page) { double }
 
     it "creates a new page and visits it" do
-      expect(Paper::Page).to receive(:new).and_return(page)
+      expect(Mache::Page).to receive(:new).and_return(page)
       expect(page).to receive(:visit)
-      Paper::Page.visit
+      Mache::Page.visit
     end
   end
 
