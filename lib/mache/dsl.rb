@@ -24,16 +24,18 @@ module Mache
         define_helper_methods(name, selector)
       end
 
-      def component(name, type, selector)
+      def component(name, klass, selector)
         define_method(name.to_s) do
-          type.new(@node.find(selector))
+          klass.new(node: @node.find(selector))
         end
         define_helper_methods(name, selector)
       end
 
-      def components(name, type, selector)
+      def components(name, klass, selector)
         define_method(name.to_s) do
-          @node.all(selector, minimum: 1).map { |element| type.new(element) }
+          @node.all(selector, minimum: 1).map do |element|
+            klass.new(node: element)
+          end
         end
         define_helper_methods(name, selector)
       end

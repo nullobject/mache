@@ -2,27 +2,60 @@ require "capybara"
 require "mache/node"
 
 module Mache
-  # A page provides a DSL for querying a wrapped capybara node object node. A
-  # page can also has a path which can be visited.
+  # The Page class wraps an HTML page with an application-specific API. You can
+  # extend it to define your own API for manipulating the pages of your web
+  # application.
+  #
+  # @example
+  #
+  #   class WelcomePage < Mache::page
+  #     element :main, "#main"
+  #     component :nav, Nav, "#nav"
+  #   end
+  #
+  #   page = WelcomePage.new(path: "/welcome")
+  #   page.visit
+  #   page.current # true
+  #   page.main.text # lorem ipsum
+  #
   class Page < Node
+    # The path where the page is located, without any domain information.
+    #
+    # @return [String] the path string
+    # @example
+    #   "/welcome"
+    #   "/users/sign_in"
     attr_reader :path
 
+    # Returns a new page object.
+    #
+    # @param node [Capybara::Node] the Capybara node to attach to
+    # @param path [String] the path where the page is located
     def initialize(node: Capybara.current_session, path: nil)
       @node ||= node
       @path ||= path
     end
 
+    # Visits the page at its {#path}.
+    #
+    # @return [Page] the page object
     def visit
       @node.visit(path)
       self
     end
 
+    # Tests whether the page is current.
+    #
+    # @return [Boolean] `true` if the page is current, `false` otherwise
     def current?
       @node.current_path == path
     end
 
+    # Creates a new page object and calls {#visit} on it.
+    #
+    # @return [Page] the page object
     def self.visit
-      new.tap(&:visit)
+      new.visit
     end
   end
 end

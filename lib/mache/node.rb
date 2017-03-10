@@ -1,17 +1,27 @@
 require "mache/dsl"
 
 module Mache
-  # An abstract class that wraps a capybara node object and exposes the mache
-  # DSL. It also delegates any capybara methods to the underlying node object.
+  # The Node class represents a wrapped HTML page, or fragment. It exposes all
+  # methods from the Mache {DSL}, and forwards any Capybara API methods to the
+  # {#node} object.
+  #
+  # @abstract
   class Node
     include DSL
 
+    # The underlying Capybara node object wrapped by this node.
+    #
+    # @return [Capybara::Node] the node object
     attr_reader :node
 
-    def initialize(node)
-      @node = node
+    # Returns a new instance of Node.
+    #
+    # @param node [Capybara::Node] the Capybara node object to wrap
+    def initialize(node:)
+      @node ||= node
     end
 
+    # Forwards any Capybara API calls to the node object.
     def method_missing(name, *args, &block)
       if @node.respond_to?(name)
         @node.send(name, *args, &block)
@@ -20,6 +30,7 @@ module Mache
       end
     end
 
+    # @!visibility private
     def respond_to_missing?(name, include_private = false)
       @node.respond_to?(name) || super
     end
