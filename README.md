@@ -87,7 +87,7 @@ page.node # <Capybara::Node>
 ### Elements
 
 To make our page object more useful, we can define an element on our page
-object class using the `element` macro. An element is simply a HTML element
+object class using the `element` macro. An element is simply an HTML element
 that we expect to find on the page using a CSS selector.
 
 Let's define a `main` element to represent the main section of our HTML page:
@@ -106,7 +106,6 @@ We can query the `main` element as an attribute of our page object:
 
 ```ruby
 page.has_main? # true
-page.main.visible? # true
 page.main.text # "lorem ipsum"
 ```
 
@@ -143,7 +142,6 @@ Querying a component of our page object is much the same as with an element:
 
 ```ruby
 page.has_header? # true
-page.header.visible? # true
 page.header.title.text # "Welcome"
 ```
 
