@@ -42,7 +42,7 @@ module Mache
     #
     # The `Alert` class can define an API for accessing the alert HTML fragment:
     #
-    #     class Alert < Mache::Component
+    #     class Alert < Mache::Node
     #       element :close_button, "button.close"
     #
     #       def dismiss
@@ -92,8 +92,8 @@ module Mache
       # @param selector [String] the selector to find the component
       # @param options [Hash] the options to pass to the Capybara finder
       def component(name, klass, selector, options = {})
-        unless klass < Component
-          raise ArgumentError, "Must be given a subclass of Component"
+        unless klass < Node
+          raise ArgumentError, "Must be given a subclass of Node"
         end
 
         define_method(name.to_s) do
@@ -110,8 +110,8 @@ module Mache
       # @param selector [String] the selector to find the components
       # @param options [Hash] the options to pass to the Capybara finder
       def components(name, klass, selector, options = {})
-        unless klass < Component
-          raise ArgumentError, "Must be given a subclass of Component"
+        unless klass < Node
+          raise ArgumentError, "Must be given a subclass of Node"
         end
 
         options = {minimum: 1}.merge(options)

@@ -112,14 +112,13 @@ page.main.text # "lorem ipsum"
 ### Components
 
 For elements that can be shared across any number of page object classes it may
-be useful to define a reusable component by extending the `Mache::Component`
-class. A component can contain any number of elements (or even other
-components).
+be useful to define a reusable component by extending the `Mache::Node` class.
+A component can contain any number of elements (or even other components).
 
 Let's define a `Header` component to represent the header of our HTML page:
 
 ```ruby
-class Header < Mache::Component
+class Header < Mache::Node
   element :title, "h1"
 end
 ```
@@ -152,17 +151,17 @@ Let's look at a more complete example for our `WelcomePage`. Note that the
 object classes we may define later for our web application.
 
 ```ruby
-class Header < Mache::Component
+class Header < Mache::Node
   element :title, "h1"
 end
 
-class NavItem < Mache::Component
+class NavItem < Mache::Node
   def selected?
     node[:class].include?("selected")
   end
 end
 
-class Nav < Mache::Component
+class Nav < Mache::Node
   components :items, NavItem, "a"
 end
 

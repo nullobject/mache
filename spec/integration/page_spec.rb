@@ -1,23 +1,23 @@
 require "rack/file"
 require "spec_helper"
 
-class Label < Mache::Component
+class Label < Mache::Node
   def required?
     node[:class].include?("required")
   end
 end
 
-class Field < Mache::Component
+class Field < Mache::Node
   component :label, Label, "label"
   element :input, "input"
 end
 
-class Form < Mache::Component
+class Form < Mache::Node
   components :fields, Field, "div"
   element :button, "button"
 end
 
-class Header < Mache::Component
+class Header < Mache::Node
   element :title, "h1"
 end
 
