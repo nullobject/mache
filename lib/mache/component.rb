@@ -17,6 +17,7 @@ module Mache
   #     components :items, NavItem, "a"
   #   end
   #
+  # @abstract
   class Component < Node
   end
 end

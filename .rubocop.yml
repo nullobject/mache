@@ -6,6 +6,9 @@ AllCops:
 Metrics/BlockLength:
   ExcludedMethods: describe
 
+Style/BlockDelimiters:
+  Enabled: false
+
 Style/Documentation:
   Exclude:
     - "spec/**/*"

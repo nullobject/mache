@@ -64,6 +64,7 @@ module Mache
         define_method(name.to_s) do
           Node.new(node: @node.find(selector, options))
         end
+
         define_helper_methods(name, selector)
       end
 
@@ -74,11 +75,13 @@ module Mache
       # @param options [Hash] the options to pass to the Capybara finder
       def elements(name, selector, options = {})
         options = {minimum: 1}.merge(options)
+
         define_method(name.to_s) do
           @node.all(selector, options).map do |node|
             Node.new(node: node)
           end
         end
+
         define_helper_methods(name, selector)
       end
 
@@ -89,9 +92,14 @@ module Mache
       # @param selector [String] the selector to find the component
       # @param options [Hash] the options to pass to the Capybara finder
       def component(name, klass, selector, options = {})
+        unless klass < Component
+          raise ArgumentError, "Must be given a subclass of Component"
+        end
+
         define_method(name.to_s) do
           klass.new(node: @node.find(selector, options))
         end
+
         define_helper_methods(name, selector)
       end
 
@@ -102,12 +110,18 @@ module Mache
       # @param selector [String] the selector to find the components
       # @param options [Hash] the options to pass to the Capybara finder
       def components(name, klass, selector, options = {})
+        unless klass < Component
+          raise ArgumentError, "Must be given a subclass of Component"
+        end
+
         options = {minimum: 1}.merge(options)
+
         define_method(name.to_s) do
           @node.all(selector, options).map do |node|
             klass.new(node: node)
           end
         end
+
         define_helper_methods(name, selector)
       end
 
