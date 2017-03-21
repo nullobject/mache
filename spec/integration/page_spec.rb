@@ -36,7 +36,7 @@ class MyPage < Mache::Page
   end
 end
 
-describe MyPage do
+RSpec.describe MyPage do
   before do
     Capybara.app = Rack::File.new(File.expand_path("../../fixtures", __FILE__))
   end

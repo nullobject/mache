@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Mache::Node do
+RSpec.describe Mache::Node do
   subject { Mache::Node }
 
   describe ".component" do

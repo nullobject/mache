@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Mache::Page do
+RSpec.describe Mache::Page do
   let(:node) { double }
   let(:path) { "/my-page" }
 
