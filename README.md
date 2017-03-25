@@ -5,6 +5,18 @@
 Mâché (pronounced "mash-ay") is a tool that helps you to write cleaner and more
 expressive acceptance tests for your Ruby web applications using page objects.
 
+## Table of contents
+
+* [Mache](#mâché)
+  * [Table of contents](#table-of-contents)
+  * [What is a page object?](#what-is-a-page-object)
+  * [Getting started](#getting-started)
+    * [Elements](#elements)
+    * [Components](#components)
+  * [Example](#example)
+  * [API documentation](#api-documentation)
+  * [License](#license)
+
 ## What is a page object?
 
 A [page object](https://martinfowler.com/bliki/PageObject.html) is a data
@@ -29,10 +41,6 @@ This is where page objects come in. Using Mâché we can for instance define a
 page object class called `SignInPage` and use it any time we want to automate
 authenticating with our app. It could handle visiting the sign in page,
 entering the user's credentials, and clicking the "Sign in" button.
-
-## Documentation
-
-Read the [API documentation](http://www.rubydoc.info/gems/mache) on RubyDoc.
 
 ## Getting started
 
@@ -142,10 +150,10 @@ Querying a component of our page object is much the same as with an element:
 page.header.title.text # "Welcome"
 ```
 
-## Writing acceptance tests with page objects
+## Example
 
-Let's look at a more complete example for our `WelcomePage`. Note that the
-`Header`, `NavItem`, and `Nav` components can be reused in any other page
+Let's look at an example of an acceptance test for our `WelcomePage`. Note that
+the `Header`, `NavItem`, and `Nav` components can be reused in any other page
 object classes we may define later for our web application.
 
 ```ruby
@@ -201,6 +209,10 @@ feature "Welcome page" do
   end
 end
 ```
+
+## API documentation
+
+Read the [API documentation](http://www.rubydoc.info/gems/mache) on RubyDoc.
 
 ## License
 
