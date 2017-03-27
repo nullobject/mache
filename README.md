@@ -25,7 +25,7 @@ structure that provides an interface to your web application for the purposes
 of test automation. For example, it could represent a single HTML page, or
 perhaps even a fragment of HTML on a page.
 
-From Martin Fowler:
+From [Martin Fowler](https://martinfowler.com/bliki/PageObject.html):
 
 > A page object wraps an HTML page, or fragment, with an application-specific
 > API, allowing you to manipulate page elements without digging around in the
