@@ -9,7 +9,7 @@ module Mache
   class Node
     include DSL
 
-    # The underlying Capybara node object wrapped by this node.
+    # The underlying Capybara node object wrapped by this instance.
     #
     # @return [Capybara::Node] the node object
     attr_reader :node

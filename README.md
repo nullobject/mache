@@ -15,6 +15,7 @@ expressive acceptance tests for your Ruby web applications using page objects.
     * [Components](#components)
   * [Example](#example)
   * [API documentation](#api-documentation)
+  * [Contributing](#contributing)
   * [License](#license)
 
 ## What is a page object?
@@ -213,6 +214,15 @@ end
 ## API documentation
 
 Read the [API documentation](http://www.rubydoc.info/gems/mache) on RubyDoc.
+
+## Contributing
+
+Pull requests are welcome. Please ensure that you run the tests before
+submitting your PR:
+
+```
+> bundle exec rake
+```
 
 ## License
 
