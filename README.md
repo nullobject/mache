@@ -7,7 +7,7 @@ expressive acceptance tests for your Ruby web applications using page objects.
 
 ## Table of contents
 
-* [Mache](#mâché)
+* [Mâché](#mâché)
   * [Table of contents](#table-of-contents)
   * [What is a page object?](#what-is-a-page-object)
   * [Getting started](#getting-started)
