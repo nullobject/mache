@@ -1,6 +1,5 @@
 AllCops:
   Exclude:
-    - "bin/**/*"
     - "mache.gemspec"
 
 Metrics/BlockLength:
