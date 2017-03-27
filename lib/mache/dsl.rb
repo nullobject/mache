@@ -1,4 +1,7 @@
 module Mache
+  # The {DSL} module is mixed into the {Node} class to provide the DSL for
+  # defining elements and components.
+  #
   # See {ClassMethods} for documentation.
   module DSL # :nodoc:
     def self.included(base)
@@ -57,9 +60,9 @@ module Mache
 
       # Defines an element that wraps an HTML fragment.
       #
-      # @param name [String, Symbol] the elements collection name
-      # @param selector [String] the selector to find the element
-      # @param options [Hash] the options to pass to the Capybara finder
+      # @param name [String, Symbol] a name for the element
+      # @param selector [String] a selector to find the element
+      # @param options [Hash] a hash of options to pass to the Capybara finder
       def element(name, selector, options = {})
         define_method(name.to_s) do
           Node.new(node: @node.find(selector, options))
@@ -70,9 +73,9 @@ module Mache
 
       # Defines a collection of elements that wrap HTML fragments.
       #
-      # @param name [String, Symbol] the elements collection name
-      # @param selector [String] the selector to find the elements
-      # @param options [Hash] the options to pass to the Capybara finder
+      # @param name [String, Symbol] a name for the elements collection
+      # @param selector [String] a selector to find the elements
+      # @param options [Hash] a hash of options to pass to the Capybara finder
       def elements(name, selector, options = {})
         options = {minimum: 1}.merge(options)
 
@@ -87,10 +90,10 @@ module Mache
 
       # Defines a component that wraps an HTML fragment.
       #
-      # @param name [String, Symbol] the elements collection name
-      # @param klass [Class] the component class
-      # @param selector [String] the selector to find the component
-      # @param options [Hash] the options to pass to the Capybara finder
+      # @param name [String, Symbol] a name for the component
+      # @param klass [Class] a component class
+      # @param selector [String] a selector to find the component
+      # @param options [Hash] a hash of options to pass to the Capybara finder
       def component(name, klass, selector, options = {})
         unless klass < Node
           raise ArgumentError, "Must be given a subclass of Node"
@@ -105,10 +108,10 @@ module Mache
 
       # Defines a collection of components that wrap HTML fragments.
       #
-      # @param name [String, Symbol] the elements collection name
-      # @param klass [Class] the component class
-      # @param selector [String] the selector to find the components
-      # @param options [Hash] the options to pass to the Capybara finder
+      # @param name [String, Symbol] a name for the components collection
+      # @param klass [Class] a component class
+      # @param selector [String] a selector to find the components
+      # @param options [Hash] a hash of options to pass to the Capybara finder
       def components(name, klass, selector, options = {})
         unless klass < Node
           raise ArgumentError, "Must be given a subclass of Node"
