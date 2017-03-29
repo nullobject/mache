@@ -3,9 +3,9 @@ module Mache
   # defining elements and components.
   #
   # See {ClassMethods} for documentation.
-  module DSL # :nodoc:
+  module DSL
     def self.included(base)
-      base.extend ClassMethods
+      base.extend(ClassMethods)
     end
 
     # Provides a set of macro-like methods for wrapping HTML fragments in {Node}
