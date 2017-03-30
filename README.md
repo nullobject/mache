@@ -184,8 +184,17 @@ end
 Then you can query the flash on your page object:
 
 ```ruby
-page.has_notice_message?("Welcome to the app")
-page.has_alert_message?("A horrible error occurred")
+page.has_message?(:success, "lorem ipsum")
+page.has_message?(:success, /lorem ipsum/)
+```
+
+There are even convenience matchers for the common types of flash messages:
+
+```ruby
+page.has_success_message?("lorem ipsum")
+page.has_notice_message?("lorem ipsum")
+page.has_alert_message?("lorem ipsum")
+page.has_error_message?("lorem ipsum")
 ```
 
 #### Routes

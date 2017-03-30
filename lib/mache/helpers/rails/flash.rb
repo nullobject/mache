@@ -3,6 +3,8 @@ module Mache
     module Rails
       # The {Flash} module can be Included into page object classes that support
       # flash behaviour.
+      #
+      # rubocop:disable Style/PredicateName
       module Flash
         def self.included(base)
           base.extend(ClassMethods)
@@ -10,22 +12,54 @@ module Mache
 
         module ClassMethods # :nodoc:
           def flash(selector)
-            element :flash, selector
+            element(:flash, selector)
           end
         end
 
-        # rubocop:disable Style/PredicateName
-        def has_notice_message?(text)
+        # Tests whether the page has a flash message.
+        #
+        # @param [String, Symbol] type a flash message type
+        # @param [Regexp, String] text a value to match
+        # @return `true` if the page has a matching message, `false` otherwise
+        def has_message?(type, text)
           css_class = flash[:class] || ""
-          css_class.include?("notice") && flash.text =~ /\s*#{text}\s*/
+          regexp = text.is_a?(String) ? /\A#{Regexp.escape(text)}\Z/ : text
+          css_class.include?(type.to_s) && flash.text.strip =~ regexp
         end
 
-        def has_alert_message?(text)
-          css_class = flash[:class] || ""
-          css_class.include?("error") && flash.text =~ /\s*#{text}\s*/
+        # Tests whether the page has a success message.
+        #
+        # @param [Regexp, String] text a value to match
+        # @return `true` if the page has a matching message, `false` otherwise
+        def has_success_message?(text)
+          has_message?(:success, text)
         end
-        # rubocop:enable Style/PredicateName
+
+        # Tests whether the page has a notice message.
+        #
+        # @param [Regexp, String] text a value to match
+        # @return `true` if the page has a matching message, `false` otherwise
+        def has_notice_message?(text)
+          has_message?(:notice, text)
+        end
+
+        # Tests whether the page has an alert message.
+        #
+        # @param [Regexp, String] text a value to match
+        # @return `true` if the page has a matching message, `false` otherwise
+        def has_alert_message?(text)
+          has_message?(:alert, text)
+        end
+
+        # Tests whether the page has an error message.
+        #
+        # @param [Regexp, String] text a value to match
+        # @return `true` if the page has a matching message, `false` otherwise
+        def has_error_message?(text)
+          has_message?(:error, text)
+        end
       end
+      # rubocop:enable Style/PredicateName
     end
   end
 end
