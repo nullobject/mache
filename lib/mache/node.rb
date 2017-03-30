@@ -1,7 +1,7 @@
 require "mache/dsl"
 
 module Mache
-  # The Node class represents a wrapped HTML page, or fragment. It exposes all
+  # The {Node} class represents a wrapped HTML page, or fragment. It exposes all
   # methods from the Mache {DSL}, and forwards any Capybara API methods to the
   # {#node} object.
   #
@@ -16,7 +16,7 @@ module Mache
 
     # Returns a new instance of Node.
     #
-    # @param node [Capybara::Node] the Capybara node object to wrap
+    # @param node [Capybara::Node] a Capybara node object to wrap
     def initialize(node:)
       @node ||= node
     end

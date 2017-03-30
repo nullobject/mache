@@ -2,8 +2,8 @@ require "capybara"
 require "mache/node"
 
 module Mache
-  # The Page class wraps an HTML page with an application-specific API. You can
-  # extend it to define your own API for manipulating the pages of your web
+  # The {Page} class wraps an HTML page with an application-specific API. You
+  # can extend it to define your own API for manipulating the pages of your web
   # application.
   #
   # @example
@@ -29,8 +29,8 @@ module Mache
 
     # Returns a new page object.
     #
-    # @param node [Capybara::Node] the Capybara node to attach to
-    # @param path [String] the path where the page is located
+    # @param node [Capybara::Node] a Capybara node to attach to
+    # @param path [String] a path to where the page is located
     def initialize(node: Capybara.current_session, path: nil)
       @node ||= node
       @path ||= path
