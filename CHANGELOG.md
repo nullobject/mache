@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.1
+
+- Fix a bug in the flash helper matchers.
+
 ## 2.1.0
 
 - Add flash and routing helpers.
