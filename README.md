@@ -13,6 +13,7 @@ expressive acceptance tests for your Ruby web applications using page objects.
   * [Getting started](#getting-started)
     * [Elements](#elements)
     * [Components](#components)
+    * [Helpers](#helpers)
   * [Example](#example)
   * [API documentation](#api-documentation)
   * [Contributing](#contributing)
@@ -53,6 +54,7 @@ HTML fragment for the welcome page in our app:
   <body>
     <header>
       <h1>Welcome</h1>
+      <div id="flash" class="notice">lorem ipsum</div>
     </header>
     <nav>
       <ul>
@@ -73,6 +75,8 @@ the `Mache::Page` class. The only method our class needs to provide is `path`,
 this tells Mâché where to go when we want to visit the page:
 
 ```ruby
+require "mache"
+
 class WelcomePage < Mache::Page
   def path
     "/welcome"
@@ -102,6 +106,8 @@ that we expect to find on the page using a CSS selector.
 Let's define a `main` element to represent the main section of our HTML page:
 
 ```ruby
+require "mache"
+
 class WelcomePage < Mache::Page
   element :main, "main"
 
@@ -126,6 +132,8 @@ A component can contain any number of elements (or even other components).
 Let's define a `Header` component to represent the header of our HTML page:
 
 ```ruby
+require "mache"
+
 class Header < Mache::Node
   element :title, "h1"
 end
@@ -135,6 +143,8 @@ We can mount the `Header` component in our page object class at a given CSS
 selector using the `component` macro:
 
 ```ruby
+require "mache"
+
 class WelcomePage < Mache::Page
   component :header, Header, "header"
   element :main, "main"
@@ -151,6 +161,52 @@ Querying a component of our page object is much the same as with an element:
 page.header.title.text # "Welcome"
 ```
 
+### Helpers
+
+Mâché provides helpers for testing Rails apps.
+
+#### Flash
+
+The `Flash` helper provides methods for testing flash messages. First define a
+flash in your page object class:
+
+```ruby
+require "mache"
+require "mache/helpers/rails"
+
+class WelcomePage < Mache::Page
+  include Mache::Helpers::Rails::Flash
+
+  flash "#flash"
+end
+```
+
+Then you can query the flash on your page object:
+
+```ruby
+page.has_notice_message?("Welcome to the app")
+page.has_alert_message?("A horrible error occurred")
+```
+
+#### Routes
+
+The `Routes` helper mixes the Rails URL helpers into your page object class.
+This allows you to use the `*_path` and `*_url` methods as you normally would
+in your Rails.
+
+```ruby
+require "mache"
+require "mache/helpers/rails"
+
+class WelcomePage < Mache::Page
+  include Mache::Helpers::Rails::Routes
+
+  def path
+    welcome_path
+  end
+end
+```
+
 ## Example
 
 Let's look at an example of an acceptance test for our `WelcomePage`. Note that
@@ -158,6 +214,9 @@ the `Header`, `NavItem`, and `Nav` components can be reused in any other page
 object classes we may define later for our web application.
 
 ```ruby
+require "mache"
+require "mache/helpers/rails"
+
 class Header < Mache::Node
   element :title, "h1"
 end
@@ -177,12 +236,16 @@ class Nav < Mache::Node
 end
 
 class WelcomePage < Mache::Page
+  include Mache::Helpers::Rails::Flash
+  include Mache::Helpers::Rails::Routes
+
   component :header, Header, "header"
   component :nav, Nav, "nav"
   element :main, "main"
+  flash "#flash"
 
   def path
-    "/welcome"
+    welcome_path
   end
 end
 
@@ -207,6 +270,10 @@ feature "Welcome page" do
 
     # main
     expect(home_page.main.text).to eq("lorem ipsum")
+
+    # flash
+    expect(home_page).to have_flash
+    expect(home_page).to have_notice_message("lorem ipsum")
   end
 end
 ```
