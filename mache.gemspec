@@ -12,9 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = "Mâché provides helps you to write cleaner and more expressive acceptance tests for your web applications using page objects."
   spec.homepage = "https://github.com/nullobject/mache"
   spec.license = "MIT"
-  spec.files = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
+  spec.files = `git ls-files --exclude-standard -z -- lib/* CHANGELOG.md LICENSE.md README.md`.split("\x0")
   spec.require_paths = ["lib"]
 
   spec.add_dependency "capybara", "~> 2"
