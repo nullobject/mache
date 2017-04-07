@@ -1,7 +1,7 @@
 module Mache
   module Helpers
     module Rails
-      # The {Routes} module can be Included into page object classes that
+      # The {Routes} module can be included into page object classes that
       # support routing.
       module Routes
         def self.included(base)

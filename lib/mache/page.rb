@@ -38,7 +38,7 @@ module Mache
 
     # Visits the page at its {#path}.
     #
-    # @return [Page] the page object
+    # @return [Page] a page object
     def visit
       @node.visit(path)
       self
@@ -53,7 +53,7 @@ module Mache
 
     # Creates a new page object and calls {#visit} on it.
     #
-    # @return [Page] the page object
+    # @return [Page] a page object
     def self.visit
       new.visit
     end

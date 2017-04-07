@@ -2,7 +2,7 @@ require "mache/dsl"
 
 module Mache
   # The {Node} class represents a wrapped HTML page, or fragment. It exposes all
-  # methods from the Mache {DSL}, and forwards any Capybara API methods to the
+  # methods from the Mache DSL, and forwards any Capybara API methods to the
   # {#node} object.
   #
   # @abstract
@@ -11,7 +11,7 @@ module Mache
 
     # The underlying Capybara node object wrapped by this instance.
     #
-    # @return [Capybara::Node] the node object
+    # @return [Capybara::Node] a node object
     attr_reader :node
 
     # Returns a new instance of Node.

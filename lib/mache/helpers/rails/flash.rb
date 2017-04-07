@@ -18,8 +18,8 @@ module Mache
 
         # Tests whether the page has a flash message.
         #
-        # @param [String, Symbol] type a flash message type
-        # @param [Regexp, String] text a value to match
+        # @param type [String, Symbol] a flash message type
+        # @param text [Regexp, String] a value to match
         # @return `true` if the page has a matching message, `false` otherwise
         def has_message?(type, text)
           css_class = flash[:class] || ""
@@ -29,7 +29,7 @@ module Mache
 
         # Tests whether the page has a success message.
         #
-        # @param [Regexp, String] text a value to match
+        # @param text [Regexp, String] a value to match
         # @return `true` if the page has a matching message, `false` otherwise
         def has_success_message?(text)
           has_message?(:success, text)
@@ -37,7 +37,7 @@ module Mache
 
         # Tests whether the page has a notice message.
         #
-        # @param [Regexp, String] text a value to match
+        # @param text [Regexp, String] a value to match
         # @return `true` if the page has a matching message, `false` otherwise
         def has_notice_message?(text)
           has_message?(:notice, text)
@@ -45,7 +45,7 @@ module Mache
 
         # Tests whether the page has an alert message.
         #
-        # @param [Regexp, String] text a value to match
+        # @param text [Regexp, String] a value to match
         # @return `true` if the page has a matching message, `false` otherwise
         def has_alert_message?(text)
           has_message?(:alert, text)
@@ -53,7 +53,7 @@ module Mache
 
         # Tests whether the page has an error message.
         #
-        # @param [Regexp, String] text a value to match
+        # @param text [Regexp, String] a value to match
         # @return `true` if the page has a matching message, `false` otherwise
         def has_error_message?(text)
           has_message?(:error, text)
