@@ -16,7 +16,6 @@ expressive acceptance tests for your Ruby web applications using page objects.
     * [Helpers](#helpers)
   * [Example](#example)
   * [API documentation](#api-documentation)
-  * [Contributing](#contributing)
   * [License](#license)
 
 ## What is a page object?
