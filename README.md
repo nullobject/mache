@@ -291,15 +291,6 @@ end
 
 Read the [API documentation](http://www.rubydoc.info/gems/mache) on RubyDoc.
 
-## Contributing
-
-Pull requests are welcome. Please ensure that you run the tests before
-submitting your PR:
-
-```
-> bundle exec rake
-```
-
 ## License
 
 Mâché is licensed under the [MIT License](/LICENSE).
