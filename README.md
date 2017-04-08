@@ -293,4 +293,4 @@ Read the [API documentation](http://www.rubydoc.info/gems/mache) on RubyDoc.
 
 ## License
 
-Mâché is licensed under the [MIT License](/LICENSE).
+Mâché is licensed under the [MIT License](/LICENSE.md).
