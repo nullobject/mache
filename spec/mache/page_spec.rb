@@ -1,10 +1,10 @@
 require "spec_helper"
 
 RSpec.describe Mache::Page do
+  subject(:page) { Mache::Page.new(node: node, path: path) }
+
   let(:node) { double }
   let(:path) { "/my-page" }
-
-  subject(:page) { Mache::Page.new(node: node, path: path) }
 
   describe ".visit" do
     let(:page) { double }

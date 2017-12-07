@@ -37,11 +37,11 @@ class MyPage < Mache::Page
 end
 
 RSpec.describe MyPage do
+  subject(:page) { MyPage.visit }
+
   before do
     Capybara.app = Rack::File.new(File.expand_path("../../fixtures", __FILE__))
   end
-
-  subject(:page) { MyPage.visit }
 
   it "has a header" do
     expect(page).to have_header
