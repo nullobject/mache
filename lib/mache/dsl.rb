@@ -55,7 +55,7 @@ module Mache
     #
     module ClassMethods
       def automation(*ids)
-        ids.map { |id| %([data-automation="#{id}"]) }.join(" ")
+        ids.map { |id| %([data-automation="#{id}"]) }.join(' ')
       end
 
       # Defines an element that wraps an HTML fragment.
@@ -96,7 +96,7 @@ module Mache
       # @param options [Hash] a hash of options to pass to the Capybara finder
       def component(name, klass, selector, options = {})
         unless klass < Node
-          raise ArgumentError, "Must be given a subclass of Node"
+          raise ArgumentError, 'Must be given a subclass of Node'
         end
 
         define_method(name.to_s) do
@@ -114,7 +114,7 @@ module Mache
       # @param options [Hash] a hash of options to pass to the Capybara finder
       def components(name, klass, selector, options = {})
         unless klass < Node
-          raise ArgumentError, "Must be given a subclass of Node"
+          raise ArgumentError, 'Must be given a subclass of Node'
         end
 
         options = {minimum: 1}.merge(options)

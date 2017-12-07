@@ -1,2 +1,2 @@
-require "mache/helpers/rails/flash"
-require "mache/helpers/rails/routes"
+require 'mache/helpers/rails/flash'
+require 'mache/helpers/rails/routes'

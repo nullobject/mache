@@ -2,11 +2,14 @@ AllCops:
   Exclude:
     - "mache.gemspec"
 
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
 Metrics/BlockLength:
   ExcludedMethods: describe
 
 Style/BlockDelimiters:
-  Enabled: false
+  EnforcedStyle: semantic
 
 Style/Documentation:
   Exclude:
@@ -14,12 +17,6 @@ Style/Documentation:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
-
-Layout/SpaceInsideHashLiteralBraces:
-  Enabled: false
-
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
 
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:

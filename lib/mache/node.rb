@@ -1,4 +1,4 @@
-require "mache/dsl"
+require 'mache/dsl'
 
 module Mache
   # The {Node} class represents a wrapped HTML page, or fragment. It exposes all

@@ -22,7 +22,7 @@ module Mache
         # @param text [Regexp, String] a value to match
         # @return `true` if the page has a matching message, `false` otherwise
         def has_message?(type, text)
-          css_class = flash[:class] || ""
+          css_class = flash[:class] || ''
           regexp = text.is_a?(String) ? /\A#{Regexp.escape(text)}\Z/ : text
           css_class.include?(type.to_s) && flash.text.strip =~ regexp
         end

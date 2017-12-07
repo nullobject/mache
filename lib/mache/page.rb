@@ -1,5 +1,5 @@
-require "capybara"
-require "mache/node"
+require 'capybara'
+require 'mache/node'
 
 module Mache
   # The {Page} class wraps an HTML page with an application-specific API. You

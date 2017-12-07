@@ -1,6 +1,6 @@
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
-require "mache"
+require 'mache'
 
 RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
