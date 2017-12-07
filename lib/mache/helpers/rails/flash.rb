@@ -4,7 +4,7 @@ module Mache
       # The {Flash} module can be Included into page object classes that support
       # flash behaviour.
       #
-      # rubocop:disable Style/PredicateName
+      # rubocop:disable Naming/PredicateName
       module Flash
         def self.included(base)
           base.extend(ClassMethods)
@@ -59,7 +59,7 @@ module Mache
           has_message?(:error, text)
         end
       end
-      # rubocop:enable Style/PredicateName
+      # rubocop:enable Naming/PredicateName
     end
   end
 end
