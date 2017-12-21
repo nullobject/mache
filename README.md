@@ -5,20 +5,18 @@
 Mâché (pronounced "mash-ay") is a tool that helps you to write cleaner and more
 expressive acceptance tests for your Ruby web applications using page objects.
 
-## Table of contents
+## Table of Contents
 
-* [Mâché](#mâché)
-  * [Table of contents](#table-of-contents)
-  * [What is a page object?](#what-is-a-page-object)
-  * [Getting started](#getting-started)
-    * [Elements](#elements)
-    * [Components](#components)
-    * [Helpers](#helpers)
-  * [Example](#example)
-  * [API documentation](#api-documentation)
-  * [License](#license)
+* [What is a Page Object?](#what-is-a-page-object)
+* [Getting Started](#getting-started)
+  * [Elements](#elements)
+  * [Components](#components)
+  * [Helpers](#helpers)
+* [Examples](#examples)
+* [Documentation](#documentation)
+* [License](#license)
 
-## What is a page object?
+## What is a Page Object?
 
 A [page object](https://martinfowler.com/bliki/PageObject.html) is a data
 structure that provides an interface to your web application for the purposes
@@ -38,12 +36,12 @@ low-level API methods like `find`, `fill_in`, and `click_button`, but it
 doesn't provide us with high-level methods to do things like "sign in to the
 app" or "click the Dashboard item in the navigation bar".
 
-This is where page objects come in. Using Mâché we can for instance define a
-page object class called `SignInPage` and use it any time we want to automate
+This is where page objects come in. Using Mâché, we can define a page object
+class called `SignInPage` and use it any time we want to automate
 authenticating with our app. It could handle visiting the sign in page,
 entering the user's credentials, and clicking the "Sign in" button.
 
-## Getting started
+## Getting Started
 
 Let's dive straight in and take a look at an example. Consider the following
 HTML fragment for the welcome page in our app:
@@ -215,7 +213,7 @@ class WelcomePage < Mache::Page
 end
 ```
 
-## Example
+## Examples
 
 Let's look at an example of an acceptance test for our `WelcomePage`. Note that
 the `Header`, `NavItem`, and `Nav` components can be reused in any other page
@@ -286,9 +284,9 @@ feature "Welcome page" do
 end
 ```
 
-## API documentation
+## Documentation
 
-Read the [API documentation](http://www.rubydoc.info/gems/mache) on RubyDoc.
+Read the [API reference](http://www.rubydoc.info/gems/mache) on RubyDoc.
 
 ## License
 
