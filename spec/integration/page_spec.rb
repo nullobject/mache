@@ -40,7 +40,7 @@ RSpec.describe MyPage do
   subject(:page) { MyPage.visit }
 
   before do
-    Capybara.app = Rack::File.new(File.expand_path('../../fixtures', __FILE__))
+    Capybara.app = Rack::File.new(File.expand_path('../fixtures', __dir__))
   end
 
   it 'has a header' do
