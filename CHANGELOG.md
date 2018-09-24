@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.0
+
+- Upgrade capybara.
+- Update documentation.
+
 ## 2.1.1
 
 - Fix a bug in the flash helper matchers.
