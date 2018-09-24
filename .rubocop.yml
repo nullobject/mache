@@ -1,12 +1,12 @@
 AllCops:
   Exclude:
-    - "mache.gemspec"
+    - 'mache.gemspec'
 
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
 Metrics/BlockLength:
-  ExcludedMethods: describe
+  ExcludedMethods: ['describe']
 
 Style/BlockDelimiters:
   EnforcedStyle: semantic
