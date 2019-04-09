@@ -18,7 +18,7 @@ module Mache
     #
     # @param node [Capybara::Node] a Capybara node object to wrap
     def initialize(node:)
-      @node ||= node
+      @node = node
     end
 
     # Forwards any Capybara API calls to the node object.

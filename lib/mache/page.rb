@@ -32,8 +32,8 @@ module Mache
     # @param node [Capybara::Node] a Capybara node to attach to
     # @param path [String] a path to where the page is located
     def initialize(node: Capybara.current_session, path: nil)
-      @node ||= node
-      @path ||= path
+      @node = node
+      @path = path
     end
 
     # Visits the page at its {#path}.
