@@ -1,7 +1,7 @@
 module Mache
   module Helpers
     module Rails
-      # The {Flash} module can be Included into page object classes that support
+      # The {Flash} module can be included into page object classes that support
       # flash behaviour.
       #
       # rubocop:disable Naming/PredicateName
