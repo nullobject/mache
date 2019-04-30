@@ -1,4 +1,6 @@
-# Changelog
+## Unreleased
+
+* Add `empty` method to `Node` class
 
 ## 3.0.0
 

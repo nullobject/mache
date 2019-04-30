@@ -46,7 +46,7 @@ RSpec.describe MyPage do
     end
 
     it 'has no flash' do
-      expect(page).to_not have_flash
+      expect(page).to have_no_flash
     end
   end
 end

@@ -50,7 +50,7 @@ RSpec.describe MyPage do
 
   it 'has a form' do
     expect(page.form).to have_fields
-    expect(page.form.fields.count).to be(2)
+    expect(page.form.fields.count).to be(3)
 
     expect(page.form.fields[0].label.text).to eq('Username')
     expect(page.form.fields[0].label).to be_required
@@ -58,6 +58,8 @@ RSpec.describe MyPage do
 
     expect(page.form.fields[1].label.text).to eq('Password')
     expect(page.form.fields[1].input.value).to be_nil
+
+    expect(page.form.fields[2]).to be_empty
 
     expect(page.form).to have_button
     expect(page.form.button.text).to eq('Sign in')
