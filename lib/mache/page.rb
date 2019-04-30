@@ -46,7 +46,7 @@ module Mache
 
     # Tests whether the page is current.
     #
-    # @return [Boolean] `true` if the page is current, `false` otherwise
+    # @return [Boolean] `true` if the page is current, `false` otherwise.
     def current?
       @node.current_path == path
     end
