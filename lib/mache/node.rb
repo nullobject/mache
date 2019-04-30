@@ -21,6 +21,13 @@ module Mache
       @node = node
     end
 
+    # Tests whether the node is empty.
+    #
+    # @return [Boolean] `true` if the node is empty, `false` otherwise.
+    def empty?
+      node.all('*').length.zero?
+    end
+
     # Forwards any Capybara API calls to the node object.
     def method_missing(name, *args, &block)
       if @node.respond_to?(name)
