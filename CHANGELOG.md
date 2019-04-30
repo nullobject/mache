@@ -1,4 +1,4 @@
-## Unreleased
+## 3.1.0 (2019-04-30)
 
 * Add `empty` method to `Node` class
 
