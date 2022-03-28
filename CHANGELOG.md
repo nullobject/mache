@@ -1,3 +1,7 @@
+## 3.2.0 (2022-03-29)
+
+* Fix Capybara errors on Ruby 3.1
+
 ## 3.1.0 (2019-04-30)
 
 * Add `empty` method to `Node` class
