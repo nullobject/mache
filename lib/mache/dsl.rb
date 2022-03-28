@@ -65,7 +65,7 @@ module Mache
       # @param options [Hash] a hash of options to pass to the Capybara finder
       def element(name, selector, options = {})
         define_method(name.to_s) do
-          Node.new(node: @node.find(selector, options))
+          Node.new(node: @node.find(selector, **options))
         end
 
         define_helper_methods(name, selector)
@@ -80,7 +80,7 @@ module Mache
         options = {minimum: 1}.merge(options)
 
         define_method(name.to_s) do
-          @node.all(selector, options).map do |node|
+          @node.all(selector, **options).map do |node|
             Node.new(node: node)
           end
         end
@@ -100,7 +100,7 @@ module Mache
         end
 
         define_method(name.to_s) do
-          klass.new(node: @node.find(selector, options))
+          klass.new(node: @node.find(selector, **options))
         end
 
         define_helper_methods(name, selector)
@@ -120,7 +120,7 @@ module Mache
         options = {minimum: 1}.merge(options)
 
         define_method(name.to_s) do
-          @node.all(selector, options).map do |node|
+          @node.all(selector, **options).map do |node|
             klass.new(node: node)
           end
         end

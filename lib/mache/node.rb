@@ -29,11 +29,21 @@ module Mache
     end
 
     # Forwards any Capybara API calls to the node object.
-    def method_missing(name, *args, &block)
-      if @node.respond_to?(name)
-        @node.send(name, *args, &block)
-      else
-        super
+    if RUBY_VERSION < "3"
+      def method_missing(name, *args, &block)
+        if @node.respond_to?(name)
+          @node.send(name, *args, &block)
+        else
+          super
+        end
+      end
+    else
+      def method_missing(name, *args, **kwargs, &block)
+        if @node.respond_to?(name)
+          @node.send(name, *args, **kwargs, &block)
+        else
+          super
+        end
       end
     end
 
